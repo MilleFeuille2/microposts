@@ -21,13 +21,21 @@ class UsersController < ApplicationController
   end
      
   def edit
+    if logged_in? && session[:user_id] == @user.id
+    else
+      redirect_to root_path, notice: 'ログインしてください'
+    end
   end
   
   def update
-    if @user.update(user_params)
-      redirect_to root_path, notice: 'プロフィールを編集しました'
+    if logged_in? && session[:user_id] == @user.id
+      if @user.update(user_params)
+        redirect_to login_path, notice: 'プロフィールを編集しました'
+      else
+        render 'edit'
+      end
     else
-      render 'edit'
+      redirect_to login_path, notice: 'ログインしてください'
     end
   end   
   
