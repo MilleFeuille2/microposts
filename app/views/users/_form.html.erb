@@ -1,0 +1,35 @@
+<%= form_for(@user, html: {class: "form-horizontal"}) do |f|  %>
+  <% if @user.errors.present? %>
+    <div class="alert alert-danger">
+      <%= alert %>
+      <ul>
+        <% @user.errors.full_messages.each do |full_message| %>
+          <li>
+            <%= full_message %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+                
+                <%= f.label :name %>
+                <%= f.text_field :name, class: "form-control" %>
+                
+                <%= f.label :email %>
+                <%= f.text_field :email, class: "form-control" %>
+                
+                <%= f.label :profile %>
+                <%= f.text_area :profile, class: "form-control", placeholder: "ここに内容を入力してください。", rows: "4" %>
+                
+                <%= f.label :region %>
+                <%= f.text_field :region, class: "form-control" %>
+                
+                <%= f.submit "Update", class: "btn btn-sm btn-primary" %>
+        
+        </div>
+    </div>
+<% end %>
