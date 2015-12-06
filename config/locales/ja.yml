@@ -193,11 +193,9 @@ ja:
       long: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"
       short: "%y/%m/%d %H:%M"
     pm: 午後
-  activerecord: 
-    following: "フォロー"
-    followers: "フォロワー"
-    followings: "フォロー"
-    view_my_profile: "プロフィールを見る"
-    Follow: "フォロー"
-    Unfollow: "アンフォロー"
-  Post: "送信"
+
+  view_my_profile: プロフィールを見る
+  Post: 送信
+  Compose_new_micropost...: 投稿内容を入力してください
+  Follow: フォロー
+  Unfollow: アンフォロー
