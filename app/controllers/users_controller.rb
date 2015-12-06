@@ -38,7 +38,30 @@ class UsersController < ApplicationController
     else
       redirect_to login_path, notice: 'ログインしてください'
     end
-  end   
+  end
+  
+  def followings
+    @title ="Followings"
+    @user = User.find(params[:id])
+    @users = @user.following_users
+    if @users.any?
+      render 'show_follow'
+    else
+      render 'show'
+    end
+  end
+  
+  def followers
+    @title = "Followers"
+    @user = User.find(params[:id])
+    @users = @user.follower_users
+    if @users.any?
+      render 'show_follow'
+    else
+      render 'show'
+    end
+  end
+  
   
   private
   
