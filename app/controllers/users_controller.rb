@@ -44,22 +44,14 @@ class UsersController < ApplicationController
     @title ="Followings"
     @user = User.find(params[:id])
     @users = @user.following_users
-    if @users.any?
-      render 'show_follow'
-    else
-      render 'show'
-    end
+    render 'show_follow'
   end
   
   def followers
     @title = "Followers"
     @user = User.find(params[:id])
     @users = @user.follower_users
-    if @users.any?
-      render 'show_follow'
-    else
-      render 'show'
-    end
+    render 'show_follow'
   end
   
   
