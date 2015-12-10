@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
-  before_action :show, only: [:edit, :update]
+  before_action :set_user, only: [:show, :edit, :update]
+  before_action :authenticate!, only: [:edit, :update]
   
   def show
-    @user = User.find(params[:id])
     @microposts = @user.microposts.order(created_at: :desc)
   end
  
@@ -22,21 +22,13 @@ class UsersController < ApplicationController
   end
      
   def edit
-    if logged_in? && session[:user_id] == @user.id
-    else
-      redirect_to root_path, notice: 'ログインしてください'
-    end
   end
   
   def update
-    if logged_in? && session[:user_id] == @user.id
-      if @user.update(user_params)
-        redirect_to login_path, notice: 'プロフィールを編集しました'
-      else
-        render 'edit'
-      end
+    if @user.update(user_params)
+      redirect_to @user, notice: 'プロフィールを編集しました'
     else
-      redirect_to login_path, notice: 'ログインしてください'
+      render 'edit'
     end
   end
   
@@ -60,6 +52,15 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :profile, :region)
   end
-
+  
+  def set_user
+    @user = User.find(params[:id])
+  end
+  
+  def authenticate!
+    if @user != current_user
+      redirect_to @user, notice: '不正なアクセス'
+    end
+  end
     
 end
