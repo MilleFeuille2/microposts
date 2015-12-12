@@ -207,3 +207,8 @@ ja:
   profile: プロフィール
   region: 地域
   You_sure?: 削除してよろしいですか？
+  Micropost_deleted: 投稿を削除しました
+  Micropost_created: 投稿しました！
+  Welcome_to_the_Sample_App!: ようこそ！
+  Please_log_in.: ログインしてください
+  invalid_email/password_combination: メールアドレスとパスワードの組み合わせが間違っています。
