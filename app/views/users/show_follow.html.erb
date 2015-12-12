@@ -12,12 +12,15 @@
         <h3><%= @title %></h3>
         <% if @users.any? %>
             <section>
-                <% @users.each do |user| %>
-                    <ul class="users clearfix">
-                        <%= gravatar_for user %>
-                        <%= link_to user.name, user %>
-                    </ul>
-                <% end %>
+                <ul style="list-style: none">
+                    <% @users.each do |user| %>
+                        <li class="users clearfix">
+                            <%= gravatar_for user %>
+                            <%= link_to user.name, user %>
+                        </li>
+                        <br>
+                    <% end %>
+                </ul>
             </section>
         <% end %>
     </div>
